@@ -40,23 +40,42 @@ function nukeButton(){
 navBar.addEventListener("dblclick", nukeButton);
 
 //Exercice 6
-let allCards = document.querySelector(".album").querySelectorAll(".card");
 let cards = document.querySelectorAll(".card");
 let cardText = document.querySelectorAll(".card-text");
 let cardImg = cards[n].querySelector("img");
-
-
 function minimizeCards(){
     cardText[n].classList.toggle("collapse");
-    cardImg.classList.toggle(cards[n].querySelector("img").style.width = "20%");
+    cardImg.classList.toggle(cardImg.style.width = "20%");
 }
 function maximixeCards(){
     cardText[n].classList.toggle("uncollapse");
-    cardImg.classList.toggle(cards[n].querySelector("img").style.width = "100%");
+    cardImg.classList.toggle(cardImg.style.width = "100%");
 }
-for (i=0; i< allCards.length; i++) {
-cards[n].addEventListener("mouseenter", minimizeCards);
-cards[n].addEventListener("mouseout", maximixeCards);
+for (i=0; i< cards.length; i++) {
+cards[i].addEventListener("mouseenter", minimizeCards);
+cards[i].addEventListener("mouseout", maximixeCards);
 }
 
 //Exercice 7
+let rightButton = document.querySelectorAll('a.btn:nth-child(2)')[0];
+	function turnRight(){
+		let firstCard = document.querySelectorAll('.album .row')[0];
+	    let card = document.getElementsByClassName('card')[5].parentElement;
+		firstCard.insertAdjacentHTML('afterbegin',card.outerHTML);
+		firstCard.removeChild(card);
+	}
+rightButton.addEventListener('click',turnRight);
+
+//Exercice 8
+let leftButton = document.querySelectorAll('a.btn:nth-child(1)')[0];
+leftButton.removeAttribute("href");
+leftButton.setAttribute("href", ("#"));
+function turnLeft(){
+    let carte = document.querySelectorAll('.album .row')[0];
+    let card = document.getElementsByClassName('card')[5].parentElement;
+    carte.insertAdjacentHTML('afterbegin',card.outerHTML);
+    carte.removeChild(card);
+}
+leftButton.addEventListener('click',turnLeft);
+
+//Exercice 9
